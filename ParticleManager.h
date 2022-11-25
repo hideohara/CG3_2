@@ -9,7 +9,7 @@
 /// <summary>
 /// 3Dオブジェクト
 /// </summary>
-class Object3d
+class ParticleManager
 {
 private: // エイリアス
 	// Microsoft::WRL::を省略
@@ -31,6 +31,7 @@ public: // サブクラス
 	struct ConstBufferData
 	{
 		XMMATRIX mat;	// ３Ｄ変換行列
+		XMMATRIX matBillboard;    // ビルボード行列
 	};
 
 private: // 定数
@@ -38,7 +39,7 @@ private: // 定数
 	static const float radius;				// 底面の半径
 	static const float prizmHeight;			// 柱の高さ
 	static const int planeCount = division * 2 + division * 2;		// 面の数
-	static const int vertexCount = 1;		// 頂点数
+	static const int vertexCount = 30;		// 頂点数
 	//static const int indexCount = 3 * 2;    // インデックス数
 
 public: // 静的メンバ関数
@@ -65,7 +66,7 @@ public: // 静的メンバ関数
 	/// 3Dオブジェクト生成
 	/// </summary>
 	/// <returns></returns>
-	static Object3d* Create();
+	static ParticleManager* Create();
 
 	/// <summary>
 	/// 視点座標の取得
@@ -225,6 +226,6 @@ private: // メンバ変数
 	// ローカルワールド変換行列
 	XMMATRIX matWorld;
 	// 親オブジェクト
-	Object3d* parent = nullptr;
+	ParticleManager* parent = nullptr;
 };
 
